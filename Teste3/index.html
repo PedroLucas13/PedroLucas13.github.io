@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pedido</title>
+    <script src="main.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body onload="alerts()">
+    <div class="container">
+        <div class="texto">
+            <p class="pergunta">Quer Debochar Legal Comigo?</p>
+            <div class="buttons">
+                <div class="button yes" id="yes" onclick="aYes()">Sim</div>
+                <div class="button no" id="no" onclick="aNo()">Não</div>
+            </div>
+        </div>
+        <div class="video" style="display:none">
+            <video width="320" height="240" autoplay>
+                <source src="video.mp4" type="video/mp4">
+                <track label="Português" kind="subtitles" srclang="pt" src="video.vtt" default>
+            </video>
+            <p class="pergunta">日本 & Ελληνικά</p>
+        </div>
+        <div class="image" style="display:none">
+            <img src="img2.png" width="320" height="240">
+        </div>
+        <form style="display: none;" class="gform pure-form pure-form-stacked" id="gform" method="POST" action="upload.php">
+            <div class="form-elements">
+                <fieldset class="pure-group">
+                    <input type="text" name="name" id="name">
+                </fieldset>
+                <fieldset class="pure-group">
+                    <input type="text" name="message" id="message">
+                </fieldset>
+                <button class="button-success pure-button button-xlarge" id="button">
+                    <i class="fa fa-paper-plane"></i>&nbsp;Send</button>
+                </div>
+            </div>
+        </form>
+    </div>
+    <script data-cfasync="false" src="form-submission-handler.js"></script>
+</body>
+</html>
