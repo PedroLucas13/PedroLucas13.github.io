@@ -7,4 +7,10 @@ function aNo(){
     document.querySelector(".texto").setAttribute("style", "display:none");
     document.querySelector(".video").setAttribute("style", "display:block");
     document.querySelector("video").play();
+    setTimeout(function(){
+        location.reload();
+    },6000);
 }
+
+
+
