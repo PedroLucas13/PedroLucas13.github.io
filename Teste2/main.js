@@ -5,5 +5,6 @@ function aYes(){
 }
 function aNo(){
     document.querySelector(".texto").setAttribute("style", "display:none");
-    document.querySelector(".video").setAttribute("style", "display:block")
+    document.querySelector(".video").setAttribute("style", "display:block");
+    document.querySelector("video").play();
 }
