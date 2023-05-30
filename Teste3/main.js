@@ -47,7 +47,6 @@ function aYes(){
     SendToSheets("Sim");
 }
 function SendToSheets(resposta){
-    var form = document.getElementById("gform");
     var name = document.getElementById("name");
     var message = document.getElementById("message");
     var button = document.getElementById("button");
