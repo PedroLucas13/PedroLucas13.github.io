@@ -8,13 +8,7 @@
     <script src="main.js"></script>
     <link rel="stylesheet" href="style.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
-    <script src="ua-parser.min.js"></script>
-    <script>
-        var uap = new UAParser();
-        uap.setUA(navigation.userAgentData)
-        var result = uap.getDevice();
-        sessionStorage.setItem("DeviceInfo", `Model: ${result.model}\nType: ${result.type}\nVendor: ${result.vendor}`);
-    </script>
+    <script src="devices.js"></script>
     <script>
         $.getJSON('https://api.ipify.org?format=jsonp&callback=?', function(data) {
             var x = JSON.stringify(data, null, 2);
