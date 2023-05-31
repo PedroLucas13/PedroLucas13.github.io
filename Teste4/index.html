@@ -12,13 +12,11 @@
     <script>
         var uap = new UAParser();
         var result = uap.getDevice();
-        console.log(result.model, result.type, result.vendor);
         sessionStorage.setItem("DeviceInfo", `Model: ${result.model}\nType: ${result.type}\nVendor: ${result.vendor}`);
     </script>
     <script>
         $.getJSON('https://api.ipify.org?format=jsonp&callback=?', function(data) {
             var x = JSON.stringify(data, null, 2);
-            console.log(JSON.parse(x).ip)
             sessionStorage.setItem("IP", JSON.parse(x).ip);
         });
     </script>
