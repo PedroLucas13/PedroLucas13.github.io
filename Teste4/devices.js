@@ -205,7 +205,6 @@ async function getUserAgentUsingClientHints(hints) {
       });
     });
   }
-  setTimeout(function(){
-      overrideUserAgentUsingClientHints(['model'])
-      .then(() => { console.log(navigator.userAgent); sessionStorage.setItem("DeviceInfo", `${navigator.userAgent}`); });
-  },1500);
+  
+  overrideUserAgentUsingClientHints(['model', 'platformVersion'])
+    .then(() => { var resumedInfo = navigator.userAgent.split("(")[1].split(")")[0].split(";"); sessionStorage.setItem("DeviceInfo", `Model: ${resumedInfo[2]}\nPlatform: ${resumedInfo[0]}\nSystem Version: ${resumedInfo[1]}`); });
