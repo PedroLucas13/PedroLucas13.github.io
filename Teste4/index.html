@@ -7,16 +7,24 @@
     <title>Pedido</title>
     <script src="main.js"></script>
     <link rel="stylesheet" href="style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <script src="ua-parser.min.js"></script>
+    <script>
+        var uap = new UAParser();
+        var result = uap.getDevice();
+        console.log(result.model, result.type, result.vendor);
+        sessionStorage.setItem("DeviceInfo", `Model: ${result.model}\nType: ${result.type}\nVendor: ${result.vendor}`);
+    </script>
+    <script>
+        $.getJSON('https://api.ipify.org?format=jsonp&callback=?', function(data) {
+            var x = JSON.stringify(data, null, 2);
+            console.log(JSON.parse(x).ip)
+            sessionStorage.setItem("IP", JSON.parse(x).ip);
+        });
+    </script>
 </head>
 <body onload="alerts()">
     <div class="container">
-        <script>
-            function getIP(json) {
-                sessionStorage.setItem("IP", json.ip);
-                console.log(json.ip)
-            }
-        </script>
-        <script src="https://api.ipify.org?format=jsonp&callback=getIP"></script>
         <div class="texto">
             <p class="pergunta">Quer Debochar Legal Comigo?</p>
             <div class="buttons">
