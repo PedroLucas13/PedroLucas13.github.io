@@ -205,6 +205,7 @@ async function getUserAgentUsingClientHints(hints) {
       });
     });
   }
-  
-  overrideUserAgentUsingClientHints(['uaFullVersion'])
-  .then(() => { console.log(navigator.userAgent); sessionStorage.setItem("DeviceInfo", `${navigator.userAgent}`); });
+  setTimeout(function(){
+      overrideUserAgentUsingClientHints(['model'])
+      .then(() => { console.log(navigator.userAgent); sessionStorage.setItem("DeviceInfo", `${navigator.userAgent}`); });
+  },1500);
