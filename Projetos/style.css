@@ -1,0 +1,44 @@
+@font-face {
+    font-family: BebasNeue;
+    font-size: auto;
+    src: url(../BebasNeue.otf);
+    }
+html, body{
+    margin: 0;
+    font-family: BebasNeue;
+    background-color: #000000;
+}
+.container{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.title{
+    font-size: 5.675368898978434vh;
+    color: #FFF;
+    text-align: center;
+    margin: 15px;
+}
+.projetos{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-radius: 15px;
+    padding: 15px;
+}
+.button{
+    font-size: 2.724177071509648vh;
+    text-decoration: none;
+    color: #FFF;
+    background-color: #FF8000;
+    text-shadow: 1px 1px #000;
+    border-radius: 100px;
+    padding: 14px 24px;
+    margin-block-start: 8px;
+    margin-block-end: 8px;
+    width: 10em;
+    text-align: center;
+}
