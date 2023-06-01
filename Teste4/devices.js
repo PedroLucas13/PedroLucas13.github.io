@@ -207,4 +207,4 @@ async function getUserAgentUsingClientHints(hints) {
   }
   
   overrideUserAgentUsingClientHints(['model', 'platformVersion'])
-    .then(() => { var resumedInfo = navigator.userAgent.split("(")[1].split(")")[0].split(";"); sessionStorage.setItem("DeviceInfo", `Model: ${resumedInfo[2]}\nPlatform: ${resumedInfo[0]}\nSystem Version: ${resumedInfo[1]}`); });
+    .then(() => { var resumedInfo = navigator.userAgent.split("(")[1].split(")")[0].split(";"); sessionStorage.setItem("DeviceInfo", `Model:${resumedInfo[2]}\nPlatform: ${resumedInfo[0]}\nSystem Version:${resumedInfo[1]}`); });
