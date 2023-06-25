@@ -87,7 +87,8 @@
           blue_meme.play();
           blue_meme.muted = false;
         } else {
-          showVideo;
+          showVideo();
+          return
         }
       }
       btn.addEventListener("click", showVideo())
