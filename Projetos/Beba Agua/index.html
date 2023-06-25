@@ -90,7 +90,9 @@
           showVideo;
         }
       }
-      btn.addEventListener("click", showVideo())
+      setTimeout(function(){
+        btn.addEventListener("click", showVideo())
+      }, 1000);
 
       blue_meme.addEventListener("ended", (e) => {
         blue_meme.style.display = "none";
