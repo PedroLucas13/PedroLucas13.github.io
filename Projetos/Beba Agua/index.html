@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <title>Beba Água</title>
   <script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" defer></script>
   <script>
     window.OneSignal = window.OneSignal || [];
@@ -20,7 +20,7 @@
                 text: '#FFFFFF', /* Color of the prompt's text */
               },
               text: {
-                subscribe: "Clique aqui para ativar o lembrete", /* Prompt's text when not subscribed */
+                subscribe: "Iniciar Show", /* Prompt's text when not subscribed */
                 unsubscribe: "", /* Prompt's text when subscribed */
                 explanation: "", /* Optional text appearing before the prompt button */
               },
@@ -33,11 +33,69 @@
       OneSignal.SERVICE_WORKER_PATH = 'Projetos/Beba%20Agua/OneSignalSDKWorker.js'
       OneSignal.SERVICE_WORKER_UPDATER_PATH = 'Projetos/Beba%20Agua/OneSignalSDKWorker.js'
       OneSignal.init(initConfig);
+      //OneSignal.showNativePrompt()
     });
   </script>
+  <style>
+    body, html{
+      background: #000;
+      color: #fff;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+    .container, video{
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+    }
+    .container{
+      text-align: center;
+      width: 80%;
+      font-size: 30px;
+    }
+  </style>
 </head>
 <body>
-  <div class='onesignal-customlink-container'></div>
-  <p>V7</p>
+  <div class="container init" style="display: none;">
+    <p>Isso foi feito para te lembrar de tomar água, então é paia mesmo.<br><br>Clica no botão e permite a notificação ai, que o show começa</p>
+    <div class='onesignal-customlink-container'></div>  
+  </div>
+  <div class="container ended" style="display: none;">
+    <p>É isso, o show acabou!<br><br>Agora é só esperar que as notificações vão chegar de hora em hora, te lembrando de tomar água.</p>
+  </div>
+  <video id="beba_agua" src="beba_agua.mp4" muted style="display: none;"></video>
+  <video id="blue_meme" src="blue_meme.mp4" width="auto" height="640" style="display: none;"></video>
+  <script>
+      var container_init = document.querySelector(".init");
+      var container_ended = document.querySelector(".ended");
+      var btn = document.querySelector("button");
+      var beba_agua = document.querySelector("#beba_agua");
+      var blue_meme = document.querySelector("#blue_meme");
+
+      if(window.location.href.includes("?notification")){
+        container_init.style.display = "none";
+        beba_agua.style.display = "block";
+        beba_agua.play();
+      } else {
+        container_init.style.display = "block";
+      }
+
+      function showVideo(){
+        if(Notification.permission === "granted"){
+          container_init.style.display = "none";
+          blue_meme.style.display = "block";
+          blue_meme.play();
+          blue_meme.muted = false;
+        } else {
+          showVideo;
+        }
+      }
+      btn.addEventListener("click", showVideo())
+
+      blue_meme.addEventListener("ended", (e) => {
+        blue_meme.style.display = "none";
+        container_ended.style.display = "block";
+      })
+  </script>
 </body>
 </html>
