@@ -57,7 +57,7 @@
 </head>
 <body>
   <div class="container init" style="display: none;">
-    <p>Isso foi feito para te lembrar de tomar água, então é paia mesmo.<br><br>Clica no "Iniciar Show" ai embaixo e permite a notificação que o show começa</p>
+    <p>Isso foi feito para te lembrar de tomar água, então é paia mesmo.<br><br>Clica no botão e permite a notificação ai, que o show começa</p>
     <div class='onesignal-customlink-container'></div>  
   </div>
   <div class="container ended" style="display: none;">
@@ -65,41 +65,48 @@
   </div>
   <video id="beba_agua" src="beba_agua.mp4" muted style="display: none;"></video>
   <video id="blue_meme" src="blue_meme.mp4" width="auto" height="640" style="display: none;"></video>
+  <video id="deadpool" src="deadpool.mp4" width="480" height="320" muted loop style="display: none;"></video>
   <script>
-      var container_init = document.querySelector(".init");
-      var container_ended = document.querySelector(".ended");
-      var btn = document.querySelector(".onesignal-customlink-container");
-      var beba_agua = document.querySelector("#beba_agua");
-      var blue_meme = document.querySelector("#blue_meme");
+    var container_init = document.querySelector(".init");
+    var container_ended = document.querySelector(".ended");
+    var beba_agua = document.querySelector("#beba_agua");
+    var blue_meme = document.querySelector("#blue_meme");
+    var deadpool = document.querySelector("#deadpool");
 
-      if(window.location.href.includes("?notification")){
+    if(window.location.href.includes("?notification")){
         container_init.style.display = "none";
         beba_agua.style.display = "block";
         beba_agua.play();
-      } else {
+    } else {
         container_init.style.display = "block";
-      }
+    }
 
-      function showVideo(){
-        if ('permissions' in navigator) {
-          navigator.permissions.query({name:'notifications'}).then(function(notificationPerm) {
-              notificationPerm.onchange = function() {
-                  if(Notification.permission === "granted"){
-                      container_init.style.display = "none";
-                      blue_meme.style.display = "block";
-                      blue_meme.play();
-                      blue_meme.muted = false;
-                  }
-              };
-          });
-        }
+    function showVideo(){
+      if ('permissions' in navigator) {
+        navigator.permissions.query({name:'notifications'}).then(function(notificationPerm) {
+            notificationPerm.onchange = function() {
+                if(Notification.permission === "granted"){
+                    container_init.style.display = "none";
+                    blue_meme.style.display = "block";
+                    blue_meme.play();
+                    blue_meme.muted = false;
+                }
+            };
+        });
       }
-      btn.addEventListener("click", showVideo())
+    }
 
-      blue_meme.addEventListener("ended", (e) => {
+
+    blue_meme.addEventListener("ended", (e) => {
         blue_meme.style.display = "none";
         container_ended.style.display = "block";
-      })
+    })
+
+    if(Notification.permission === "granted"){
+      container_init.style.display = "none";
+      deadpool.style.display = "block";
+      deadpool.play();
+    }
   </script>
 </body>
 </html>
