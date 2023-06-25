@@ -81,19 +81,21 @@
     }
 
     function showVideo(){
+      console.log("A")
       if ('permissions' in navigator) {
         navigator.permissions.query({name:'notifications'}).then(function(notificationPerm) {
             notificationPerm.onchange = function() {
-                if(Notification.permission === "granted"){
-                    container_init.style.display = "none";
-                    blue_meme.style.display = "block";
-                    blue_meme.play();
-                    blue_meme.muted = false;
-                }
-                else {
-                  showVideo();
-                  return
-                }
+              console.log("B")
+              if(Notification.permission === "granted"){
+                  container_init.style.display = "none";
+                  blue_meme.style.display = "block";
+                  blue_meme.play();
+                  blue_meme.muted = false;
+              }
+              else {
+                showVideo();
+                return
+              }
             };
         });
       }
