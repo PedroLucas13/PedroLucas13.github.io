@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html lang="pt-br">
 <head>
   <meta charset="UTF-8">
@@ -34,6 +33,7 @@
       OneSignal.SERVICE_WORKER_UPDATER_PATH = 'Projetos/Beba%20Agua/OneSignalSDKWorker.js'
       OneSignal.init(initConfig);
       //OneSignal.showNativePrompt()
+      navigator.serviceWorker.register('ServiceWorker.js');
     });
   </script>
   <style>
@@ -86,7 +86,6 @@
         navigator.permissions.query({name:'notifications'}).then(function(notificationPerm) {
             notificationPerm.onchange = function() {
                 if(Notification.permission === "granted"){
-                    navigator.serviceWorker.register('ServiceWorker.js');
                     navigator.serviceWorker.ready.then(function(registration) {
                       registration.showNotification('As notificações foram ativadas! Você irá receber um lembrete de hora em hora.');
                     });
