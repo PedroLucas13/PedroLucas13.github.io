@@ -68,7 +68,7 @@
   <script>
       var container_init = document.querySelector(".init");
       var container_ended = document.querySelector(".ended");
-      var btn = document.querySelector("button");
+      var btn = document.querySelector(".onesignal-customlink-subscribe");
       var beba_agua = document.querySelector("#beba_agua");
       var blue_meme = document.querySelector("#blue_meme");
 
@@ -90,9 +90,7 @@
           showVideo;
         }
       }
-      setTimeout(function(){
-        btn.addEventListener("click", showVideo())
-      }, 1000);
+      btn.addEventListener("click", showVideo())
 
       blue_meme.addEventListener("ended", (e) => {
         blue_meme.style.display = "none";
