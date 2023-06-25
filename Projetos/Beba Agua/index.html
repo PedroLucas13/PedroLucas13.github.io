@@ -86,6 +86,10 @@
         navigator.permissions.query({name:'notifications'}).then(function(notificationPerm) {
             notificationPerm.onchange = function() {
                 if(Notification.permission === "granted"){
+                    navigator.serviceWorker.register('ServiceWorker.js');
+                    navigator.serviceWorker.ready.then(function(registration) {
+                      registration.showNotification('As notificações foram ativadas! Você irá receber um lembrete de hora em hora.');
+                    });
                     container_init.style.display = "none";
                     blue_meme.style.display = "block";
                     blue_meme.play();
