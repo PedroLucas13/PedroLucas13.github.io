@@ -102,7 +102,7 @@
         container_ended.style.display = "block";
     })
 
-    if(Notification.permission === "granted"){
+    if(Notification.permission === "granted" && !window.location.href.includes("?notification")){
       container_init.style.display = "none";
       deadpool.style.display = "block";
       deadpool.play();
